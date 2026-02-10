@@ -53,6 +53,36 @@ const testimonials = [
   { quote: "Support is responsive and actually helpful.", name: "Architect @ClickUp", company: "ClickUp", logo: "/logos/clickup.svg" },
 ];
 
+const featureCards = [
+  {
+    title: "Working Knowledge",
+    subtitle: "Routing logic that scales.",
+    tone: "from-orange-500/80 via-orange-400/60 to-orange-600/80",
+  },
+  {
+    title: "Practical Demonstration",
+    subtitle: "Zero-trust in real time.",
+    tone: "from-stone-200/90 via-stone-100/80 to-stone-200/90",
+    textDark: true,
+  },
+  {
+    title: "Collaborate with AI",
+    subtitle: "Generate policies instantly.",
+    tone: "from-blue-500/80 via-blue-400/70 to-blue-600/80",
+  },
+  {
+    title: "Building Interface Kit",
+    subtitle: "Composable edge blocks.",
+    tone: "from-emerald-400/80 via-emerald-300/70 to-emerald-500/80",
+    textDark: true,
+  },
+  {
+    title: "Interface Kit",
+    subtitle: "Secure gateways by default.",
+    tone: "from-neutral-900/90 via-neutral-800/80 to-neutral-900/90",
+  },
+];
+
 const MotionWord: React.FC<{ word: string; index: number }> = ({ word, index }) => (
   <motion.span
     className="inline-block"
@@ -207,6 +237,8 @@ export const Homepage = () => {
             </p>
           </motion.div>
 
+          <IrregularFeatureCards />
+
           <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
             {features.map((feature, i) => (
               <motion.div
@@ -310,3 +342,66 @@ const TestimonialCard: React.FC<Testimonial> = ({ quote, name, company, logo }) 
     </div>
   </div>
 );
+
+const IrregularFeatureCards = () => {
+  const reduceMotion = useReducedMotion();
+  const float = reduceMotion
+    ? {}
+    : {
+        y: [0, -10, 0],
+        transition: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+      };
+
+  const cardTransforms = [
+    "left-0 top-10 rotate-[-12deg]",
+    "left-14 top-2 rotate-[6deg]",
+    "left-36 top-6 rotate-[-4deg]",
+    "left-24 top-40 rotate-[10deg]",
+    "left-44 top-32 rotate-[-2deg]",
+  ];
+
+  return (
+    <div className="mt-16 flex flex-col items-center gap-10 lg:flex-row lg:items-start">
+      <div className="relative h-[420px] w-full max-w-xl">
+        {featureCards.map((card, index) => (
+          <motion.button
+            key={card.title}
+            initial={{ y: 24, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+            viewport={{ once: true }}
+            whileHover={reduceMotion ? undefined : { y: -8, scale: 1.02 }}
+            className={`absolute ${cardTransforms[index]} w-52 origin-bottom-left cursor-pointer`}
+            style={float}
+            aria-label={card.title}
+          >
+            <div
+              className={`flex h-72 w-full flex-col justify-end rounded-2xl border border-border bg-gradient-to-br ${card.tone} p-5 shadow-2xl transition-shadow duration-300 hover:shadow-[0_25px_70px_rgba(59,130,246,0.3)]`}
+            >
+              <div className={`text-lg font-semibold ${card.textDark ? "text-neutral-900" : "text-white"}`}>
+                {card.title}
+              </div>
+              <div className={`mt-2 text-xs uppercase tracking-[0.2em] ${card.textDark ? "text-neutral-700" : "text-white/70"}`}>
+                {card.subtitle}
+              </div>
+              <div className={`mt-6 h-20 rounded-xl ${card.textDark ? "bg-black/10" : "bg-white/10"}`} />
+            </div>
+          </motion.button>
+        ))}
+      </div>
+      <div className="max-w-xl">
+        <h3 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+          An irregular, tactile feature stack.
+        </h3>
+        <p className="mt-4 text-text-muted">
+          Each card floats with subtle depth and motion, revealing a playful but premium feel while keeping interaction crisp.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3 text-sm text-text-muted">
+          <span className="rounded-full border border-border px-3 py-1">Hover lift</span>
+          <span className="rounded-full border border-border px-3 py-1">Soft parallax</span>
+          <span className="rounded-full border border-border px-3 py-1">Focus glow</span>
+        </div>
+      </div>
+    </div>
+  );
+};
