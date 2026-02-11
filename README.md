@@ -1,4 +1,4 @@
-# Vexar - API Vexar Landing Page
+# Vexar - SaaS Landing Page
 
 <div align="center">
 
@@ -13,7 +13,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-A modern, high-performance landing page for Vexar API Vexar platform featuring 3D card interactions, smooth animations, and glassmorphism design.
+A modern, high-performance SaaS landing page for the Vexar platform featuring 3D card interactions, smooth animations, and glassmorphism design.
 
 [Live Demo](#) · [Report Bug](#) · [Request Feature](#)
 
@@ -70,8 +70,8 @@ A modern, high-performance landing page for Vexar API Vexar platform featuring 3
 
 ```bash
 # Clone the repository
-git clone https://github.com/moli721/vexar-hyperscale-saas.git
-cd vexar-hyperscale-saas
+git clone https://github.com/moli721/gateway-hyperscale-saas.git
+cd gateway-hyperscale-saas
 
 # Install dependencies
 npm install

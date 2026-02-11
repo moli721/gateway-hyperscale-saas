@@ -41,7 +41,6 @@ const CodeBlock: React.FC<{ language: string; code: string }> = ({ language, cod
 };
 
 export const DocsPage = () => {
-  const reduceMotion = useReducedMotion();
 
   return (
     <div className="container mx-auto grid grid-cols-12 gap-8 px-4 pt-32">

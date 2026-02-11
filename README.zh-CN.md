@@ -13,7 +13,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-一个现代化、高性能的 Vexar API 网关平台落地页，具有 3D 卡片交互、流畅动画和玻璃态设计。
+一个现代化、高性能的 Vexar SaaS 平台落地页，具有 3D 卡片交互、流畅动画和玻璃态设计。
 
 [在线演示](#) · [报告问题](#) · [功能建议](#)
 
@@ -70,8 +70,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/moli721/vexar-hyperscale-saas.git
-cd vexar-hyperscale-saas
+git clone https://github.com/moli721/gateway-hyperscale-saas.git
+cd gateway-hyperscale-saas
 
 # 安装依赖
 npm install

@@ -95,7 +95,6 @@ const MotionWord: React.FC<{ word: string; index: number }> = ({ word, index }) 
 export const Homepage = () => {
   const reduceMotion = useReducedMotion();
   const heroRef = useRef<HTMLDivElement>(null);
-  const [spotlight, setSpotlight] = useState({ x: 50, y: 50 });
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
