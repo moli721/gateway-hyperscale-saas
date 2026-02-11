@@ -12,7 +12,7 @@ const searchItems = [
   { title: "Quickstart Overview", type: "Page", icon: FileText, href: "/docs#overview" },
   { title: "Installation", type: "Page", icon: FileText, href: "/docs#installation" },
   { title: "Basic Configuration", type: "API", icon: Code2, href: "/docs#basic-config" },
-  { title: "Deploying your Gateway", type: "API", icon: Layers, href: "/docs#deploying" },
+  { title: "Deploying your Vexar", type: "API", icon: Layers, href: "/docs#deploying" },
   { title: "Pricing", type: "Page", icon: FileText, href: "/pricing" },
 ];
 

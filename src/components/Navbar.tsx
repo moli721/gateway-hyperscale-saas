@@ -22,8 +22,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
             className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl"
         >
             <div className="flex items-center justify-between rounded-full border border-border bg-black/50 p-2 pl-6 pr-3 backdrop-blur-md">
-                <Link to="/" className="text-lg font-bold tracking-tight text-text">
-                    GATEWAY
+                <Link to="/" className="flex items-center gap-2 text-lg font-bold tracking-tight text-text">
+                    <img src="/favicon.svg" alt="Vexar" className="h-6 w-6" />
+                    Vexar
                 </Link>
                 <div className="hidden items-center gap-6 md:flex">
                     {navLinks.map((link) => (

@@ -3,7 +3,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { useRef, useState } from "react";
 import { CardStack, type CardStackItem } from "../components/ui/card-stack";
 
-const heroWords = ["The", "API", "Gateway", "for"];
+const heroWords = ["The", "API", "Vexar", "for"];
 
 const features = [
   {
@@ -39,12 +39,12 @@ const features = [
 ];
 
 const testimonials = [
-  { quote: "Gateway transformed our microservices architecture.", name: "CTO @ScaleAI", company: "ScaleAI", logo: "/logos/scaleai.svg" },
+  { quote: "Vexar transformed our microservices architecture.", name: "CTO @ScaleAI", company: "ScaleAI", logo: "/logos/scaleai.svg" },
   { quote: "The performance is simply unparalleled.", name: "Lead Eng @Vercel", company: "Vercel", logo: "/logos/vercel.svg" },
   { quote: "Observability is now a first-class citizen for us.", name: "DevOps @Linear", company: "Linear", logo: "/logos/linear.svg" },
   { quote: "We cut our ingress costs by 70%.", name: "Infra Lead @Plaid", company: "Plaid", logo: "/logos/plaid.svg" },
   { quote: "The declarative config is a game-changer.", name: "SRE @Ramp", company: "Ramp", logo: "/logos/ramp.svg" },
-  { quote: "Finally, a gateway that doesn't get in the way.", name: "Eng Manager @Loom", company: "Loom", logo: "/logos/loom.svg" },
+  { quote: "Finally, a vexar that doesn't get in the way.", name: "Eng Manager @Loom", company: "Loom", logo: "/logos/loom.svg" },
   { quote: "Our developers are shipping faster than ever.", name: "VP Eng @Brex", company: "Brex", logo: "/logos/brex.svg" },
   { quote: "The security features are incredibly robust.", name: "Security Eng @Retool", company: "Retool", logo: "/logos/retool.svg" },
   { quote: "I can't imagine going back to our old system.", name: "Principal Eng @Notion", company: "Notion", logo: "/logos/notion.svg" },
@@ -76,7 +76,7 @@ const featureCards = [
   },
   {
     title: "Interface Kit",
-    subtitle: "Secure gateways, fast.",
+    subtitle: "Secure vexars, fast.",
     tone: "from-[#0F172A]/80 via-accent-blue/15 to-black/90",
   },
 ];
@@ -121,8 +121,8 @@ export const Homepage = () => {
             className="absolute inset-0 h-full w-full object-cover"
           >
             <source
-              src="https://customer-cbeadsgr09pnsezs.cloudflarestream.com/6571025a2e02041c8b85dbd43210fa3a/manifest/video.m3u8"
-              type="application/x-mpegURL"
+              src="/assets/backgroundvideo.mp4"
+              type="video/mp4"
             />
           </video>
           <div className="absolute inset-0 bg-black/70" />
@@ -237,7 +237,7 @@ export const Homepage = () => {
               Built for <span className="font-serif italic text-blue-400">Modern</span> Engineering.
             </h2>
             <p className="mt-4 mx-auto max-w-md text-zinc-400">
-              Gateway provides the building blocks for secure, scalable, and observable APIs.
+              Vexar provides the building blocks for secure, scalable, and observable APIs.
             </p>
           </motion.div>
 
@@ -357,7 +357,7 @@ export const Homepage = () => {
           >
             <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl">Trusted by the Best</h2>
             <p className="mt-4 text-text-muted">
-              From high-growth startups to Fortune 500 companies, engineers trust Gateway.
+              From high-growth startups to Fortune 500 companies, engineers trust Vexar.
             </p>
           </motion.div>
         </div>
@@ -385,7 +385,7 @@ export const Homepage = () => {
           >
             <h2 className="text-5xl font-bold tracking-tighter text-text sm:text-7xl">Ready to scale?</h2>
             <p className="mt-4 max-w-xl text-lg text-text-muted">
-              Start for free. No credit card required. Instantly unlock the full power of Gateway.
+              Start for free. No credit card required. Instantly unlock the full power of Vexar.
             </p>
             <button className="group relative mt-8 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple px-12 py-5 font-cta text-xl text-text transition-transform duration-300 hover:scale-105">
               Get Started for Free <ArrowRight className="ml-2 inline transition-transform duration-300 group-hover:translate-x-1" />

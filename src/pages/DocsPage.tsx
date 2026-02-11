@@ -63,35 +63,35 @@ export const DocsPage = () => {
       <main className="col-span-12 lg:col-span-6 prose prose-invert max-w-none prose-h1:tracking-tighter prose-h1:font-bold prose-h2:tracking-tighter prose-h2:font-bold prose-h3:font-bold prose-a:text-accent-blue hover:prose-a:underline">
         <h1>Quickstart</h1>
         <p>
-          This guide walks you through installing Gateway, creating a basic configuration,
+          This guide walks you through installing Vexar, creating a basic configuration,
           and deploying your first API to the edge.
         </p>
 
         <h2 id="overview">Overview</h2>
         <p>
-          Gateway is a high-performance, declarative API gateway built for modern cloud-native
+          Vexar is a high-performance, declarative API gateway built for modern cloud-native
           applications. It allows you to manage, secure, and observe your APIs with ease.
         </p>
 
         <h2 id="installation">Installation</h2>
-        <p>Install the Gateway CLI on macOS or Linux:</p>
+        <p>Install the Vexar CLI on macOS or Linux:</p>
         <CodeBlock
           language="bash"
-          code={`# macOS\nbrew install gateway-cli\n\n# Linux / WSL\ncurl -sSL https://gateway.dev/install.sh | sh`}
+          code={`# macOS\nbrew install vexar-cli\n\n# Linux / WSL\ncurl -sSL https://vexar.dev/install.sh | sh`}
         />
 
         <h3 id="basic-config">Basic Configuration</h3>
-        <p>Create a gateway.yml file in your project root.</p>
+        <p>Create a vexar.yml file in your project root.</p>
         <CodeBlock
           language="yaml"
           code={`version: "1.0"\nservices:\n  - name: my-api\n    url: http://localhost:3000\n    routes:\n      - path: /my-api\n        methods: [GET, POST]`}
         />
 
-        <h2 id="deploying">Deploying your Gateway</h2>
+        <h2 id="deploying">Deploying your Vexar</h2>
         <p>Once configured, deploy with a single command:</p>
-        <CodeBlock language="bash" code={`gateway deploy`} />
+        <CodeBlock language="bash" code={`vexar deploy`} />
         <p>
-          This provisions the required infrastructure and deploys your gateway to the edge,
+          This provisions the required infrastructure and deploys your vexar to the edge,
           making it globally available in seconds.
         </p>
 
@@ -99,7 +99,7 @@ export const DocsPage = () => {
         <ul>
           <li>Explore advanced security features like JWT validation and mTLS.</li>
           <li>Set up monitoring and logging integrations.</li>
-          <li>Use plugins to extend Gateway functionality.</li>
+          <li>Use plugins to extend Vexar functionality.</li>
         </ul>
       </main>
 

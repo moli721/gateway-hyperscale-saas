@@ -19,7 +19,7 @@ export const FloatingAIChat = () => {
             <div className="flex items-center justify-between border-b border-border px-4 py-3">
               <div className="flex items-center gap-2 text-sm font-semibold">
                 <Sparkles size={16} className="text-accent-purple" />
-                Gateway AI
+                Vexar AI
               </div>
               <button
                 onClick={() => setOpen(false)}
@@ -36,7 +36,7 @@ export const FloatingAIChat = () => {
                 How do I enable zero-trust policies?
               </div>
               <div className="rounded-xl border border-border bg-black/40 p-3 text-text-muted">
-                Use the `policies` block in your gateway.yml to enforce mTLS and JWT validation.
+                Use the `policies` block in your vexar.yml to enforce mTLS and JWT validation.
               </div>
             </div>
             <div className="border-t border-border p-3">

@@ -1,4 +1,4 @@
-# Gateway - API Gateway Landing Page
+# Vexar - API Vexar Landing Page
 
 <div align="center">
 
@@ -8,12 +8,12 @@
 
 <div align="center">
 
-![Gateway](https://img.shields.io/badge/Gateway-v2.0-blue?style=for-the-badge)
+![Vexar](https://img.shields.io/badge/Vexar-v2.0-blue?style=for-the-badge)
 ![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-A modern, high-performance landing page for API Gateway platform featuring 3D card interactions, smooth animations, and glassmorphism design.
+A modern, high-performance landing page for Vexar API Vexar platform featuring 3D card interactions, smooth animations, and glassmorphism design.
 
 [Live Demo](#) · [Report Bug](#) · [Request Feature](#)
 
@@ -70,8 +70,8 @@ A modern, high-performance landing page for API Gateway platform featuring 3D ca
 
 ```bash
 # Clone the repository
-git clone https://github.com/moli721/gateway-hyperscale-saas.git
-cd gateway-hyperscale-saas
+git clone https://github.com/moli721/vexar-hyperscale-saas.git
+cd vexar-hyperscale-saas
 
 # Install dependencies
 npm install
