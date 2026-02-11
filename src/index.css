@@ -15,7 +15,7 @@
   height: 100vh;
   background-image: url('/noise.png');
   /* You will need to add a noise.png to your public folder */
-  opacity: 0.05;
+  opacity: 0.04;
   mix-blend-mode: overlay;
   pointer-events: none;
   z-index: 100;

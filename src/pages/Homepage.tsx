@@ -1,39 +1,39 @@
-import { ArrowRight, Activity, Globe, KeyRound, Server, Shield, Zap } from "lucide-react";
+import { ArrowRight, Globe, KeyRound, Server, Shield, Zap } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { CardStack, type CardStackItem } from "../components/ui/card-stack";
 
 const heroWords = ["The", "API", "Gateway", "for"];
 
 const features = [
   {
+    id: 1,
     title: "Global Edge Network",
-    desc: "Deploy your APIs to the edge, achieving < 30ms latency worldwide.",
+    description: "Deploy your APIs to the edge, achieving < 30ms latency worldwide.",
     icon: Globe,
-    highlight: true,
   },
   {
+    id: 2,
     title: "Zero Trust Security",
-    desc: "mTLS, JWT validation, and granular access policies built-in.",
+    description: "mTLS, JWT validation, and granular access policies built-in.",
     icon: Shield,
   },
   {
-    title: "Real-time Observability",
-    desc: "Structured logs, distributed tracing, and custom metrics.",
-    icon: Activity,
-  },
-  {
+    id: 3,
     title: "High-Performance Core",
-    desc: "Rust core with less than 1ms overhead at p95.",
+    description: "Rust core with less than 1ms overhead at p95.",
     icon: Zap,
   },
   {
+    id: 4,
     title: "Declarative Configuration",
-    desc: "Define services, routes, and policies in a simple config.",
+    description: "Define services, routes, and policies in a simple config.",
     icon: Server,
   },
   {
+    id: 5,
     title: "Automated Key Management",
-    desc: "Rotate keys and sync JWTs with your identity provider.",
+    description: "Rotate keys and sync JWTs with your identity provider.",
     icon: KeyRound,
   },
 ];
@@ -55,31 +55,29 @@ const testimonials = [
 
 const featureCards = [
   {
-    title: "Working Knowledge",
-    subtitle: "Routing logic that scales.",
-    tone: "from-orange-500/80 via-orange-400/60 to-orange-600/80",
+    title: "Routing Intelligence",
+    subtitle: "Policy-first, zero drift.",
+    tone: "from-accent-blue/70 via-accent-purple/30 to-black/80",
   },
   {
-    title: "Practical Demonstration",
-    subtitle: "Zero-trust in real time.",
-    tone: "from-stone-200/90 via-stone-100/80 to-stone-200/90",
-    textDark: true,
+    title: "Zero-Trust Kit",
+    subtitle: "mTLS + JWT by default.",
+    tone: "from-accent-purple/70 via-accent-blue/30 to-black/80",
   },
   {
-    title: "Collaborate with AI",
-    subtitle: "Generate policies instantly.",
-    tone: "from-blue-500/80 via-blue-400/70 to-blue-600/80",
+    title: "Realtime Signals",
+    subtitle: "Logs, traces, metrics.",
+    tone: "from-accent-blue/60 via-accent-purple/20 to-black/85",
   },
   {
-    title: "Building Interface Kit",
-    subtitle: "Composable edge blocks.",
-    tone: "from-emerald-400/80 via-emerald-300/70 to-emerald-500/80",
-    textDark: true,
+    title: "Edge Builder",
+    subtitle: "Composable primitives.",
+    tone: "from-accent-purple/60 via-accent-blue/20 to-black/85",
   },
   {
     title: "Interface Kit",
-    subtitle: "Secure gateways by default.",
-    tone: "from-neutral-900/90 via-neutral-800/80 to-neutral-900/90",
+    subtitle: "Secure gateways, fast.",
+    tone: "from-[#0F172A]/80 via-accent-blue/15 to-black/90",
   },
 ];
 
@@ -97,6 +95,7 @@ const MotionWord: React.FC<{ word: string; index: number }> = ({ word, index }) 
 export const Homepage = () => {
   const reduceMotion = useReducedMotion();
   const heroRef = useRef<HTMLDivElement>(null);
+  const [spotlight, setSpotlight] = useState({ x: 50, y: 50 });
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -112,14 +111,14 @@ export const Homepage = () => {
 
   return (
     <div className="bg-background">
-      <section ref={heroRef} className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-32">
-        <div className="absolute inset-0 z-0">
+      <section ref={heroRef} className="relative -mt-16 flex min-h-screen flex-col items-center justify-center overflow-hidden pb-32">
+        <div className="absolute inset-0 z-0 bg-black">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="h-full w-full scale-110 object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
           >
             <source
               src="https://customer-cbeadsgr09pnsezs.cloudflarestream.com/6571025a2e02041c8b85dbd43210fa3a/manifest/video.m3u8"
@@ -127,6 +126,8 @@ export const Homepage = () => {
             />
           </video>
           <div className="absolute inset-0 bg-black/70" />
+          {/* Gradient fade to black at bottom */}
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black via-black/80 to-transparent" />
         </div>
 
         <div className="relative z-10 flex flex-col items-center px-4 text-center">
@@ -177,7 +178,7 @@ export const Homepage = () => {
             initial={{ y: 16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-4"
+            className="relative z-30 mt-8 mb-32 flex flex-wrap items-center justify-center gap-4"
           >
             <button className="group relative rounded-full bg-gradient-to-r from-accent-blue to-accent-purple px-7 py-3 font-cta text-text transition-transform duration-300 hover:scale-105">
               Start Building
@@ -191,7 +192,7 @@ export const Homepage = () => {
 
         <motion.div
           style={dashStyle}
-          className="pointer-events-none absolute bottom-[-12%] z-20 w-[88%] max-w-5xl rounded-2xl border border-border bg-surface p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-xl"
+          className="pointer-events-none absolute bottom-[-12%] z-10 w-[88%] max-w-5xl rounded-2xl border border-border bg-surface p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-xl"
         >
           <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
             <div className="rounded-xl border border-border/70 bg-black/40 p-5">
@@ -222,7 +223,8 @@ export const Homepage = () => {
         </motion.div>
       </section>
 
-      <section id="features" className="bg-background-secondary py-24 sm:py-32">
+      <section id="features" className="relative bg-background-secondary py-24 sm:py-32">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(30,64,175,0.15),transparent_60%)]" />
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -231,42 +233,92 @@ export const Homepage = () => {
             viewport={{ once: true }}
             className="mx-auto max-w-2xl text-center"
           >
-            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl">Built for Modern Engineering</h2>
-            <p className="mt-4 text-text-muted">
+            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl">
+              Built for <span className="font-serif italic text-blue-400">Modern</span> Engineering.
+            </h2>
+            <p className="mt-4 mx-auto max-w-md text-zinc-400">
               Gateway provides the building blocks for secure, scalable, and observable APIs.
             </p>
           </motion.div>
 
           <IrregularFeatureCards />
 
-          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {features.map((feature, i) => (
-              <motion.div
-                key={feature.title}
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeInOut" }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className={`group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition-all duration-500 hover:bg-surface-hover ${feature.highlight ? "md:col-span-2" : ""}`}
-              >
-                <div className="relative z-10">
-                  <feature.icon className="mb-4 h-8 w-8 text-accent-blue" />
-                  <h3 className="text-lg font-bold text-text">{feature.title}</h3>
-                  <p className="mt-2 text-sm text-text-muted">{feature.desc}</p>
-                </div>
-                {feature.highlight && (
-                  <div className="relative z-10 mt-6 h-36 rounded-xl border border-border/60 bg-black/30">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.35),transparent_55%)]" />
-                    <div className="absolute left-8 top-10 h-2 w-2 rounded-full bg-accent-blue shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse motion-reduce:animate-none" />
-                    <div className="absolute right-14 top-6 h-2 w-2 rounded-full bg-accent-purple shadow-[0_0_20px_rgba(139,92,246,0.6)] animate-pulse motion-reduce:animate-none" />
-                    <div className="absolute left-24 bottom-8 h-2 w-2 rounded-full bg-accent-blue shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse motion-reduce:animate-none" />
-                    <div className="absolute right-32 bottom-10 h-2 w-2 rounded-full bg-accent-purple shadow-[0_0_20px_rgba(139,92,246,0.6)] animate-pulse motion-reduce:animate-none" />
+          <div className="relative mt-16">
+            <CardStack
+              items={features as CardStackItem[]}
+              initialIndex={0}
+              maxVisible={5}
+              cardWidth={480}
+              cardHeight={320}
+              overlap={0.6}
+              spreadDeg={38}
+              perspectivePx={1200}
+              depthPx={100}
+              tiltXDeg={8}
+              activeLiftPx={24}
+              activeScale={1.05}
+              inactiveScale={0.93}
+              springStiffness={280}
+              springDamping={28}
+              loop={true}
+              autoAdvance={false}
+              showDots={true}
+              renderCard={(item, { active }) => {
+                const Icon = item.icon;
+                return (
+                  <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-black shadow-[0_20px_70px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.03)] backdrop-blur-xl transition-all duration-500">
+                    {/* Subtle noise texture */}
+                    <div
+                      className="pointer-events-none absolute inset-0 opacity-[0.02]"
+                      style={{
+                        backgroundImage:
+                          "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                      }}
+                    />
+
+                    {/* Gradient overlays */}
+                    <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.06),transparent_50%)]" />
+                    <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[linear-gradient(145deg,rgba(255,255,255,0.02),rgba(0,0,0,0.8))] opacity-80" />
+
+                    {/* Active state glow */}
+                    {active && (
+                      <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.08),transparent_60%)]" />
+                    )}
+
+                    {/* Content */}
+                    <div className="relative z-10 flex h-full flex-col items-center justify-center p-7 text-center">
+                      {Icon && (
+                        <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.04] ring-1 ring-white/[0.06]">
+                          <Icon className="h-6 w-6 text-accent-blue opacity-90" />
+                        </span>
+                      )}
+                      <h3 className="text-2xl font-semibold tracking-tight text-white">
+                        {item.title.includes("Global") && (
+                          <>
+                            <span className="font-serif italic text-accent-blue/90">Global</span> Edge Network
+                          </>
+                        )}
+                        {item.title.includes("Zero") && (
+                          <>
+                            Zero <span className="font-serif italic text-accent-blue/90">Trust</span> Security
+                          </>
+                        )}
+                        {item.title.includes("High") && "High-Performance Core"}
+                        {item.title.includes("Declarative") && (
+                          <>
+                            Declarative <span className="font-serif italic text-accent-blue/90">Config</span>
+                          </>
+                        )}
+                        {item.title.includes("Automated") && "Automated Key Management"}
+                      </h3>
+                      <p className="mt-3 max-w-xs text-sm leading-relaxed text-zinc-400">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                )}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </motion.div>
-            ))}
+                );
+              }}
+            />
           </div>
         </div>
       </section>
@@ -344,57 +396,63 @@ const TestimonialCard: React.FC<Testimonial> = ({ quote, name, company, logo }) 
 );
 
 const IrregularFeatureCards = () => {
-  const reduceMotion = useReducedMotion();
-  const float = reduceMotion
-    ? {}
-    : {
-        y: [0, -10, 0],
-        transition: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-      };
+  const [deckHovered, setDeckHovered] = useState(false);
 
-  const cardTransforms = [
-    "left-0 top-10 rotate-[-12deg]",
-    "left-14 top-2 rotate-[6deg]",
-    "left-36 top-6 rotate-[-4deg]",
-    "left-24 top-40 rotate-[10deg]",
-    "left-44 top-32 rotate-[-2deg]",
+  const rotations = [-8, 5, 12, -6, 7];
+  const offsets = [
+    { x: -18, y: 12 },
+    { x: 8, y: 4 },
+    { x: 18, y: 10 },
+    { x: -6, y: 22 },
+    { x: 14, y: 28 },
   ];
 
   return (
-    <div className="mt-16 flex flex-col items-center gap-10 lg:flex-row lg:items-start">
-      <div className="relative h-[420px] w-full max-w-xl">
-        {featureCards.map((card, index) => (
-          <motion.button
-            key={card.title}
-            initial={{ y: 24, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
-            viewport={{ once: true }}
-            whileHover={reduceMotion ? undefined : { y: -8, scale: 1.02 }}
-            className={`absolute ${cardTransforms[index]} w-52 origin-bottom-left cursor-pointer`}
-            style={float}
-            aria-label={card.title}
-          >
-            <div
-              className={`flex h-72 w-full flex-col justify-end rounded-2xl border border-border bg-gradient-to-br ${card.tone} p-5 shadow-2xl transition-shadow duration-300 hover:shadow-[0_25px_70px_rgba(59,130,246,0.3)]`}
-            >
-              <div className={`text-lg font-semibold ${card.textDark ? "text-neutral-900" : "text-white"}`}>
-                {card.title}
-              </div>
-              <div className={`mt-2 text-xs uppercase tracking-[0.2em] ${card.textDark ? "text-neutral-700" : "text-white/70"}`}>
-                {card.subtitle}
-              </div>
-              <div className={`mt-6 h-20 rounded-xl ${card.textDark ? "bg-black/10" : "bg-white/10"}`} />
-            </div>
-          </motion.button>
-        ))}
+    <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div
+        className="relative h-[420px] w-full max-w-xl"
+        onMouseEnter={() => setDeckHovered(true)}
+        onMouseLeave={() => setDeckHovered(false)}
+      >
+        <div className="absolute -inset-8 -z-10 rounded-[36px] bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.2),transparent_55%)] blur-2xl" />
+        <div className="relative mx-auto w-64">
+          {featureCards.map((card, index) => {
+            const baseOffset = index * 14;
+            const fanOffset = deckHovered ? index * 62 : baseOffset;
+            const scale = 1 - index * 0.03;
+            const depthClass = index === featureCards.length - 1 ? "opacity-20 blur-[2px]" : "opacity-100";
+            return (
+              <motion.button
+                key={card.title}
+                initial={{ y: 24, opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                animate={{
+                  x: deckHovered ? offsets[index].x : 0,
+                  y: fanOffset + offsets[index].y,
+                  rotate: deckHovered ? rotations[index] : rotations[index] * 0.6,
+                  scale,
+                }}
+                transition={{ duration: 0.5, delay: 0.08 + index * 0.06 }}
+                viewport={{ once: true }}
+                className="absolute left-0 top-0 w-64 origin-top cursor-pointer"
+                style={{ zIndex: featureCards.length - index }}
+                aria-label={card.title}
+              >
+                <div className={`flex h-72 w-full flex-col justify-end rounded-2xl border border-border bg-[#0A0A0A]/80 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 ${depthClass}`}>
+                  <div className="text-lg font-semibold text-white">{card.title}</div>
+                  <div className="mt-2 text-xs uppercase tracking-[0.2em] text-white/70">{card.subtitle}</div>
+                  <div className={`mt-6 h-20 rounded-xl bg-gradient-to-br ${card.tone} opacity-70`} />
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
       <div className="max-w-xl">
-        <h3 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-          An irregular, tactile feature stack.
-        </h3>
-        <p className="mt-4 text-text-muted">
-          Each card floats with subtle depth and motion, revealing a playful but premium feel while keeping interaction crisp.
+        <p className="text-xs font-badge uppercase tracking-widest text-text-muted">Feature Stack</p>
+        <h3 className="mt-3 text-4xl font-bold tracking-tighter">A cohesive, tactile system.</h3>
+        <p className="mt-4 text-base text-text-muted">
+          Cards float with depth and focus, while maintaining the same blue-purple energy that powers the rest of the brand.
         </p>
         <div className="mt-6 flex flex-wrap gap-3 text-sm text-text-muted">
           <span className="rounded-full border border-border px-3 py-1">Hover lift</span>
@@ -405,3 +463,5 @@ const IrregularFeatureCards = () => {
     </div>
   );
 };
+
+

@@ -7,8 +7,8 @@ export default {
         extend: {
             colors: {
                 background: {
-                    DEFAULT: "#030305", // Deep Void Black
-                    secondary: "#0A0A0A", // Charcoal
+                    DEFAULT: "#000000", // Absolute Void
+                    secondary: "#050505", // Deep Charcoal
                 },
                 surface: {
                     DEFAULT: "rgba(255, 255, 255, 0.03)", // Glass White
