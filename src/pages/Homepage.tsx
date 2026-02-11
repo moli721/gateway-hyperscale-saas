@@ -265,6 +265,18 @@ export const Homepage = () => {
               showDots={true}
               renderCard={(item, { active }) => {
                 const Icon = item.icon;
+
+                // 为每张卡片定义独特的渐变色
+                const cardGradients: Record<string, string> = {
+                  "Global Edge Network": "radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)",
+                  "Zero Trust Security": "radial-gradient(circle_at_30%_20%,rgba(139,92,246,0.08),transparent_50%)",
+                  "High-Performance Core": "radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)",
+                  "Declarative Configuration": "radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.08),transparent_50%)",
+                  "Automated Key Management": "radial-gradient(circle_at_30%_20%,rgba(139,92,246,0.1),transparent_50%)",
+                };
+
+                const gradient = cardGradients[item.title] || "radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.06),transparent_50%)";
+
                 return (
                   <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-black shadow-[0_20px_70px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.03)] backdrop-blur-xl transition-all duration-500">
                     {/* Subtle noise texture */}
@@ -276,13 +288,16 @@ export const Homepage = () => {
                       }}
                     />
 
-                    {/* Gradient overlays */}
-                    <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.06),transparent_50%)]" />
+                    {/* Unique gradient overlay for each card */}
+                    <div
+                      className="pointer-events-none absolute inset-0 rounded-3xl"
+                      style={{ background: gradient }}
+                    />
                     <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[linear-gradient(145deg,rgba(255,255,255,0.02),rgba(0,0,0,0.8))] opacity-80" />
 
                     {/* Active state glow */}
                     {active && (
-                      <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.08),transparent_60%)]" />
+                      <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.12),transparent_60%)]" />
                     )}
 
                     {/* Content */}
@@ -300,16 +315,24 @@ export const Homepage = () => {
                         )}
                         {item.title.includes("Zero") && (
                           <>
-                            Zero <span className="font-serif italic text-accent-blue/90">Trust</span> Security
+                            Zero <span className="font-serif italic text-accent-purple/90">Trust</span> Security
                           </>
                         )}
-                        {item.title.includes("High") && "High-Performance Core"}
+                        {item.title.includes("High") && (
+                          <>
+                            <span className="font-serif italic text-accent-blue/90">High-Performance</span> Core
+                          </>
+                        )}
                         {item.title.includes("Declarative") && (
                           <>
                             Declarative <span className="font-serif italic text-accent-blue/90">Config</span>
                           </>
                         )}
-                        {item.title.includes("Automated") && "Automated Key Management"}
+                        {item.title.includes("Automated") && (
+                          <>
+                            <span className="font-serif italic text-accent-purple/90">Automated</span> Key Management
+                          </>
+                        )}
                       </h3>
                       <p className="mt-3 max-w-xs text-sm leading-relaxed text-zinc-400">
                         {item.description}
