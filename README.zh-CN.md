@@ -1,4 +1,4 @@
-# Vexar - API 网关落地页
+# Vexar - SaaS 落地页
 
 <div align="center">
 
@@ -16,6 +16,8 @@
 一个现代化、高性能的 Vexar SaaS 平台落地页，具有 3D 卡片交互、流畅动画和玻璃态设计。
 
 [在线演示](#) · [报告问题](#) · [功能建议](#)
+
+![Preview](./public/assets/preview.png)
 
 </div>
 

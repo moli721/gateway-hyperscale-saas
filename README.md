@@ -17,6 +17,8 @@ A modern, high-performance SaaS landing page for the Vexar platform featuring 3D
 
 [Live Demo](#) · [Report Bug](#) · [Request Feature](#)
 
+![Preview](./public/assets/preview.png)
+
 </div>
 
 ---
